@@ -61,8 +61,8 @@ src/
 ├── pages/                      # 페이지 단위 UI 조합 (app/은 얇게 유지)
 │   ├── login/
 │   │   └── LoginPage.tsx
-│   └── team-profile/
-│       └── TeamProfilePage.tsx
+│   └── teamficiallog/
+│       └── TeamficialLogPage.tsx
 │
 ├── features/                   # 사용자 행동 단위 (인터랙션 중심)
 │   └── auth/
@@ -91,7 +91,6 @@ src/
 │   │       ├── IconButton.tsx
 │   │       └── icons/          # SVGR 컴포넌트화된 아이콘
 │   ├── hooks/
-│   │   └── useIsMobile.ts
 │   ├── lib/
 │   │   └── utils.ts
 │   └── types/
@@ -134,7 +133,7 @@ app → pages → features → entities → shared
 - **모바일 only**: 데스크탑 레이아웃 불필요. 반응형 분기 최소화.
 - **TypeScript strict**: `any` 타입 사용 금지. 타입 추론이 불가한 경우 명시적 타입 정의.
 - **컴포넌트 파일명**: PascalCase (`IconButton.tsx`)
-- **훅 파일명**: camelCase with `use` prefix (`useIsMobile.ts`)
+- **훅 파일명**: camelCase with `use` prefix (`useAuth.ts`)
 - **서버/클라이언트 분리**: 레이아웃 레벨 컴포넌트에 `"use client"` 금지. 클라이언트 로직은 wrapper 컴포넌트로 분리.
 
 ### Tailwind CSS v4
@@ -168,6 +167,12 @@ import { IconButton } from "@/shared/components/ui/IconButton";
 - 키워드 버튼 등 반복 렌더링 이미지는 `sizes` prop 명시.
 - SVG 아이콘은 SVGR, 래스터 이미지는 `next/image`.
 
+### HTTP 클라이언트
+
+- **axios**: 인증이 필요한 API 요청 전반. 반드시 `shared/api/axios.ts` 인스턴스를 통한다.
+- **fetch**: Next.js 서버 컴포넌트에서 `cache`, `revalidate` 등 Next.js 고유 캐싱 기능이 필요한 경우에만 사용.
+- 인증이 필요한 요청에 fetch 사용 금지 (interceptor 없어 토큰 처리 불가).
+
 ### 상태 관리
 
 - **서버 상태**: TanStack Query (React Query)
@@ -196,7 +201,6 @@ const normalizeDate = (str: string) =>
 
 - 리렌더링 유발하지 않을 플래그 값은 `useRef` 사용 (dismissal 추적, alert 중복 방지 등).
 - `useCallback`으로 함수 참조 안정화 → `useEffect` 무한루프 방지.
-- `useIsMobile`: mount 시 실제 `window.innerWidth`로 초기화, `matchMedia`로 동기화.
 
 ---
 
@@ -210,16 +214,15 @@ const normalizeDate = (str: string) =>
 
 ---
 
-## 파비콘 / PWA
+## 파비콘
 
 필요한 파일:
 
 ```
 public/
 ├── favicon.ico
-├── apple-touch-icon.png    # 180x180
-├── favicon-96x96.png
-└── site.webmanifest
+├── apple-touch-icon.png    # 180x180 (iPhone Safari 북마크용)
+└── favicon-96x96.png
 ```
 
 - `realfavicongenerator.net`에서 생성 권장.
@@ -292,5 +295,3 @@ NEXT_PUBLIC_KAKAO_JS_KEY=
 NEXT_PUBLIC_GOOGLE_CLIENT_ID=
 NEXT_PUBLIC_GOOGLE_REDIRECT_URI=
 ```
-
-> `.env.local`은 절대 커밋하지 말 것. `.env.example`만 커밋.

@@ -39,8 +39,8 @@ src/
 ├── pages/                  # 페이지 단위 UI 조합 (app/은 얇게 유지)
 │   ├── login/
 │   │   └── LoginPage.tsx
-│   └── team-profile/
-│       └── TeamProfilePage.tsx
+│   └── teamficiallog/
+│       └── TeamficialLogPage.tsx
 │
 ├── features/               # 사용자 행동 단위 (인터랙션 중심)
 │   └── auth/
@@ -139,13 +139,16 @@ import { IconButton } from "@/shared/components/ui/IconButton";
 
 ## API 및 인증
 
-### axios 인스턴스
+### HTTP 클라이언트
 
 ```
-shared/api/axios.ts   — interceptor 붙은 인스턴스 (일반 API 요청용)
+shared/api/axios.ts   — interceptor 붙은 인스턴스 (인증 필요한 API 요청용)
 shared/api/auth.ts    — plain axios 인스턴스 (토큰 리프레시 전용)
 ```
 
+- **axios**: 인증이 필요한 API 요청 전반. 반드시 `axios.ts` 인스턴스를 통한다.
+- **fetch**: Next.js 서버 컴포넌트에서 `cache`, `revalidate` 등 Next.js 고유 캐싱 기능이 필요한 경우에만 사용.
+- 인증이 필요한 요청에 fetch 사용 금지 (interceptor 없어 토큰 처리 불가).
 - 리프레시 요청에 절대 `axios.ts`의 인스턴스를 사용하지 않는다 (무한루프).
 - 동시 401 발생 시 `isRefreshing` + `failedQueue` 패턴으로 처리.
 
@@ -182,7 +185,7 @@ shared/api/auth.ts    — plain axios 인스턴스 (토큰 리프레시 전용)
 - [ ] `<img>` 대신 `<Image>` 사용
 - [ ] 인라인 `style` 속성 미사용 (`cn()` 유틸 사용)
 - [ ] 날짜 문자열 ISO 8601 정규화
-- [ ] 환경변수 `.env.local` 미커밋 (`.env.example` 업데이트 여부 확인)
+- [ ] 환경변수 `.env.local` 미커밋
 - [ ] `pnpm build` 통과
 
 ---
