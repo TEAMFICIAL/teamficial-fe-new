@@ -36,7 +36,7 @@ src/
 │   └── [logId]/
 │       └── page.tsx
 │
-├── pages/                  # 페이지 단위 UI 조합 (app/은 얇게 유지)
+├── views/                  # 페이지 단위 UI 조합 (app/은 얇게 유지)
 │   ├── login/
 │   │   └── LoginPage.tsx
 │   └── teamficiallog/
@@ -79,7 +79,7 @@ src/
 ### 레이어 import 규칙
 
 ```
-app → pages → features → entities → shared
+app → views → features → entities → shared
 ```
 
 - 상위 레이어만 하위 레이어를 import할 수 있다.

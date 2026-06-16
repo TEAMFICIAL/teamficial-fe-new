@@ -58,7 +58,7 @@ src/
 │   └── [logId]/                # 팀피셜록 페이지
 │       └── page.tsx
 │
-├── pages/                      # 페이지 단위 UI 조합 (app/은 얇게 유지)
+├── views/                      # 페이지 단위 UI 조합 (app/은 얇게 유지) — FSD pages 레이어. Next.js src/pages/ 충돌로 views/ 사용
 │   ├── login/
 │   │   └── LoginPage.tsx
 │   └── teamficiallog/
@@ -104,7 +104,7 @@ src/
 ### 레이어 import 규칙
 
 ```
-app → pages → features → entities → shared
+app → views → features → entities → shared
 ```
 
 - 상위 레이어만 하위 레이어를 import할 수 있다.
