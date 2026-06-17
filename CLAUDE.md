@@ -52,15 +52,18 @@ src/
 │   ├── layout.tsx
 │   ├── loading.tsx             # 공통 로딩 (전체 라우트 적용)
 │   ├── page.tsx                # 루트 → /login 리다이렉트
-│   ├── (auth)/
-│   │   └── login/
+│   ├── login/
 │   │       └── page.tsx
-│   └── [logId]/                # 팀피셜록 페이지
+│   ├── review/[logId]/
+│   │       └── page.tsx
+│   └── teamficiallog/[logId]/                # 팀피셜록 페이지
 │       └── page.tsx
 │
 ├── views/                      # 페이지 단위 UI 조합 (app/은 얇게 유지) — FSD pages 레이어. Next.js src/pages/ 충돌로 views/ 사용
 │   ├── login/
 │   │   └── LoginPage.tsx
+│   ├── review/
+│   │   └── ReviewPage.tsx
 │   └── teamficiallog/
 │       └── TeamficialLogPage.tsx
 │

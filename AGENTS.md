@@ -26,19 +26,22 @@ CLAUDE.md의 개발 규칙을 전제로 하며, 이 파일은 작업 방식·판
 
 ```
 src/
-├── app/                    # 라우팅 전용. UI 로직 최소화
+├── app/                        # 라우팅 전용. UI 로직 최소화
 │   ├── layout.tsx
-│   ├── loading.tsx         # 공통 로딩 (전체 라우트 적용)
-│   ├── page.tsx            # 루트 → /login 리다이렉트
-│   ├── (auth)/
-│   │   └── login/
+│   ├── loading.tsx             # 공통 로딩 (전체 라우트 적용)
+│   ├── page.tsx                # 루트 → /login 리다이렉트
+│   ├── login/
 │   │       └── page.tsx
-│   └── [logId]/
+│   ├── review/[logId]/
+│   │       └── page.tsx
+│   └── teamficiallog/[logId]/                # 팀피셜록 페이지
 │       └── page.tsx
 │
 ├── views/                  # 페이지 단위 UI 조합 (app/은 얇게 유지)
 │   ├── login/
 │   │   └── LoginPage.tsx
+│   ├── review/
+│   │   └── ReviewPage.tsx
 │   └── teamficiallog/
 │       └── TeamficialLogPage.tsx
 │
