@@ -38,7 +38,7 @@ export function useOAuthCallback({ provider, loginFn }: OAuthCallbackOptions) {
 
         const redirectPath = localStorage.getItem("redirectAfterLogin");
         localStorage.removeItem("redirectAfterLogin");
-        router.replace(redirectPath || "/");
+        router.replace(redirectPath || `/teamficiallog/${uuid}`);
       })
       .catch(() => {
         router.replace("/login");
