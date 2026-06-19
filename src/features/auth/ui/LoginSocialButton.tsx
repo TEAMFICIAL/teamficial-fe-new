@@ -46,6 +46,7 @@ export function LoginSocialButton({
             alt="최근 로그인"
             width={104}
             height={32}
+            className="h-8 w-26"
           />
         </div>
       )}
@@ -53,19 +54,18 @@ export function LoginSocialButton({
         type="button"
         onClick={onClick}
         className={cn(
-          "relative flex w-full cursor-pointer flex-row items-center justify-center rounded-lg px-10 py-4",
+          "relative flex w-full cursor-pointer flex-row items-center justify-center rounded-lg px-10 py-4 body-7",
           config.bgColor,
         )}
       >
-        <div className="mr-2 h-5 w-5">
-          <Image
-            src={config.imageSrc}
-            alt={`${config.name} logo`}
-            loading="lazy"
-            width={20}
-            height={20}
-          />
-        </div>
+        <Image
+          src={config.imageSrc}
+          alt={`${config.name} logo`}
+          loading="lazy"
+          width={20}
+          height={20}
+          className="h-5 w-5 mr-2"
+        />
         <span className={config.textColor}>
           {config.name} 계정으로 계속하기
         </span>
