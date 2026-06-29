@@ -57,8 +57,13 @@ src/
 │   ├── layout.tsx
 │   ├── loading.tsx             # 공통 로딩 (전체 라우트 적용)
 │   ├── page.tsx                # 루트 → /login 리다이렉트
-│   ├── login/
-│   │       └── page.tsx
+│   ├── (auth)/
+│   │   ├── login/
+│   │   │   └── page.tsx
+│   │   ├── kakao/oauth/
+│   │   │   └── page.tsx    # 카카오 콜백
+│   │   └── google/oauth/
+│   │       └── page.tsx    # 구글 콜백
 │   ├── review/[logId]/
 │   │       └── page.tsx
 │   └── teamficiallog/[logId]/                # 팀피셜록 페이지
@@ -91,8 +96,7 @@ src/
 │
 ├── shared/                     # 도메인 무관 공통 리소스
 │   ├── api/
-│   │   ├── axios.ts            # axios 인스턴스 및 interceptor
-│   │   └── auth.ts             # 토큰 리프레시 (plain axios 인스턴스 사용)
+│   │   └── axios.ts             # api 인스턴스
 │   ├── components/
 │   │   └── ui/
 │   │       ├── Button.tsx
