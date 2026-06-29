@@ -1,11 +1,11 @@
 export interface UserInfo {
   uuid: string;
-  userId: string;
+  userId: number;
   userName: string;
 }
 
 export interface AuthResult {
-  userId: string;
+  userId: number;
   accessToken: string;
   refreshToken: string;
   uuid: string;

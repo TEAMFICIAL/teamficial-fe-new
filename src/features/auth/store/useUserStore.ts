@@ -5,7 +5,7 @@ import { clearAuthStorage } from "@/shared/lib/auth";
 
 interface UserState {
   uuid: string | null;
-  userId: string | null;
+  userId: number | null;
   userName: string | null;
   _hasHydrated: boolean;
   setUser: (data: UserInfo) => void;
