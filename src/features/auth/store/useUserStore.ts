@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { User } from "@/entities/user/model/User";
+import { clearAuthStorage } from "@/shared/lib/auth";
 
 interface UserState {
   uuid: string | null;
@@ -21,8 +22,7 @@ export const useUserStore = create<UserState>()(
       _hasHydrated: false,
       setUser: (data) => set(data),
       clearUser: () => {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+        clearAuthStorage();
         set({ uuid: null, userId: null, userName: null });
       },
       setHasHydrated: (value) => set({ _hasHydrated: value }),

@@ -63,8 +63,19 @@ export function getCookie(name: string): string | null {
   return null;
 }
 
-export function removeCookie(name: string, path = "/") {
+export function removeCookie(
+  name: string,
+  options: { path?: string; domain?: string } = {},
+) {
   if (typeof window === "undefined") return;
 
-  document.cookie = `${encodeURIComponent(name)}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${path};`;
+  const { path = "/", domain } = options;
+
+  let cookie = `${encodeURIComponent(name)}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=${path};`;
+
+  if (domain) {
+    cookie += ` domain=${domain};`;
+  }
+
+  document.cookie = cookie;
 }
