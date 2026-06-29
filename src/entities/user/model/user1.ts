@@ -1,15 +1,16 @@
-export interface User {
+export interface UserInfo {
   uuid: string;
   userId: string;
   userName: string;
 }
 
-export interface AuthTokens {
+export interface AuthResult {
+  userId: string;
   accessToken: string;
   refreshToken: string;
+  uuid: string;
+  userName: string;
 }
-
-export interface AuthResult extends User, AuthTokens {}
 
 export interface AuthResponse {
   code: string;
