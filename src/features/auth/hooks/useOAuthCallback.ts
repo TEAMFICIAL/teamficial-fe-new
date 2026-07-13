@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useUserStore } from "@/features/auth/store/useUserStore";
 import { setCookie } from "@/shared/lib/cookie";
 import type { Provider } from "@/features/auth/model/types";
-import type { AuthResponse } from "@/entities/user/model/User";
+import { AuthResponse } from "@/entities/user/model";
 
 interface OAuthCallbackOptions {
   provider: Provider;

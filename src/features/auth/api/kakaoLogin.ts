@@ -1,5 +1,5 @@
 import api from "@/shared/api/axios";
-import type { AuthResponse } from "@/entities/user/model/User";
+import type { AuthResponse } from "@/entities/user/model";
 
 export async function kakaoLogin(code: string): Promise<AuthResponse> {
   const res = await api.post<AuthResponse>("/auth/kakao", null, {

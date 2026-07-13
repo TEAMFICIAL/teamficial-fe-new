@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { User } from "@/entities/user/model/User";
+import type { UserInfo } from "@/entities/user/model";
 import { clearAuthStorage } from "@/shared/lib/auth";
 
 interface UserState {
   uuid: string | null;
-  userId: string | null;
+  userId: number | null;
   userName: string | null;
   _hasHydrated: boolean;
-  setUser: (data: User) => void;
+  setUser: (data: UserInfo) => void;
   clearUser: () => void;
   setHasHydrated: (value: boolean) => void;
 }
