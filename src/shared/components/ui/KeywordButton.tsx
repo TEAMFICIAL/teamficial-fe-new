@@ -4,10 +4,9 @@ interface KeywordButtonProps {
   keywordName: string;
   keywordId: number;
   position: {
-    top: string;
-    left?: string;
-    right?: string;
-    rotate: string;
+    topClass: string;
+    sideClass: string;
+    rotateClass: string;
   };
   onClick: (keywordId: number) => void;
 }
@@ -21,14 +20,7 @@ export function KeywordButton({
   return (
     <button
       type="button"
-      className="absolute z-10 cursor-pointer"
-      style={{
-        top: position.top,
-        ...(position.left !== undefined ? { left: position.left } : {}),
-        ...(position.right !== undefined ? { right: position.right } : {}),
-        transform: `rotate(${position.rotate})`,
-        transformOrigin: "center center",
-      }}
+      className={`absolute z-10 cursor-pointer origin-center ${position.topClass} ${position.sideClass} ${position.rotateClass}`}
       onClick={() => onClick(keywordId)}
     >
       <Image

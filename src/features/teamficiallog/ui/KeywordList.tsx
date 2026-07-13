@@ -6,11 +6,27 @@ import type { KeywordItem } from "@/entities/team/model";
 
 // 노트 높이 기준 비율 (top, left/right 모두 %)
 const KEYWORD_RATIOS = [
-  { topRatio: 0.18, left: "52%", rotate: "14.8deg" },
-  { topRatio: 0.34, left: "6%", rotate: "0deg" },
-  { topRatio: 0.5, left: "54%", rotate: "6.7deg" },
-  { topRatio: 0.66, left: "4%", rotate: "14.1deg" },
-  { topRatio: 0.82, left: "53%", rotate: "-3.1deg" },
+  {
+    topClass: "top-[18%]",
+    sideClass: "left-[52%]",
+    rotateClass: "rotate-[14.8deg]",
+  },
+  { topClass: "top-[34%]", sideClass: "left-[6%]", rotateClass: "rotate-0" },
+  {
+    topClass: "top-[50%]",
+    sideClass: "left-[54%]",
+    rotateClass: "rotate-[6.7deg]",
+  },
+  {
+    topClass: "top-[66%]",
+    sideClass: "left-[4%]",
+    rotateClass: "rotate-[14.1deg]",
+  },
+  {
+    topClass: "top-[82%]",
+    sideClass: "left-[53%]",
+    rotateClass: "rotate-[-3.1deg]",
+  },
 ] as const;
 
 interface KeywordListProps {
@@ -46,9 +62,9 @@ export function KeywordList({ keywords, onKeywordClick }: KeywordListProps) {
             keywordName={keyword.keywordName}
             keywordId={keyword.keywordId}
             position={{
-              top: `${ratio.topRatio * 100}%`,
-              left: ratio.left,
-              rotate: ratio.rotate,
+              topClass: ratio.topClass,
+              sideClass: ratio.sideClass,
+              rotateClass: ratio.rotateClass,
             }}
             onClick={onKeywordClick}
           />
