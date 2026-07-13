@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-interface ErrorProps {
+interface ErrorViewProps {
   message?: string;
 }
 
-export function Error({ message }: ErrorProps) {
+export function ErrorView({ message }: ErrorViewProps) {
   return (
     <div className="bg-gray-0/40 fixed inset-0 z-9999 flex items-center justify-center">
       <div className="flex flex-col gap-3 rounded-2xl text-center items-center">

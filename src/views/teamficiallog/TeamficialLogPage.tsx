@@ -3,7 +3,7 @@
 import { useUserStore } from "@/features/auth/store/useUserStore";
 import { useRequesterInfo } from "@/features/teamficiallog/hooks/useRequesterInfo";
 import { LogNote } from "@/features/teamficiallog/ui/LogNote";
-import { Error } from "@/shared/components/ui/Error";
+import { ErrorView } from "@/shared/components/ui/ErrorView";
 import { Spinner } from "@/shared/components/ui/Spinner";
 
 type Props = {
@@ -42,7 +42,7 @@ function SharedMode({ logId }: { logId: string }) {
   if (isLoading) return <Spinner />;
 
   if (isError || !requesterInfo) {
-    return <Error />;
+    return <ErrorView />;
   }
 
   return (

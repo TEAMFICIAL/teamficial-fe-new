@@ -6,7 +6,7 @@ import { KeywordList } from "./KeywordList";
 import { useKeywordList } from "@/features/teamficiallog/hooks/useKeywordList";
 import { ChevronIcon } from "@/shared/components/ui/icons/Chevronicon";
 import { Spinner } from "@/shared/components/ui/Spinner";
-import { Error } from "@/shared/components/ui/Error";
+import { ErrorView } from "@/shared/components/ui/ErrorView";
 
 // 노트 최소 높이 (px) — 기존과 동일
 const MIN_NOTE_HEIGHT = 400;
@@ -41,7 +41,7 @@ export function LogNote({ userId }: LogNoteProps) {
 
     observer.observe(noteRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [isLoading, isError]);
 
   function handleKeywordClick(keywordId: number) {
     console.log("keyword clicked:", keywordId);
@@ -52,7 +52,7 @@ export function LogNote({ userId }: LogNoteProps) {
   }
 
   if (isError) {
-    return <Error />;
+    return <ErrorView />;
   }
 
   return (
