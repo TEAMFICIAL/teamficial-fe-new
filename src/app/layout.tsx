@@ -30,10 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable} antialiased`}>
-        <div className="mx-auto min-h-dvh w-full max-w-160 bg-white px-4">
-          <QueryProvider>{children}</QueryProvider>
-        </div>
+      <body className={`${pretendard.variable} min-h-dvh w-full antialiased`}>
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );
