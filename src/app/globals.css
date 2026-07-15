@@ -232,6 +232,10 @@ body {
   background: linear-gradient(90deg, #19e6b3 0%, #fbfcd4 100%);
 }
 
+@utility gradient-bg-04 {
+  background: linear-gradient(106.38deg, #69edcc -17.45%, #fbfcd4 94.91%);
+}
+
 /* slide-up 애니메이션 */
 @keyframes slide-up {
   from {
