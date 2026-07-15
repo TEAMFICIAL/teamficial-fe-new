@@ -12,10 +12,8 @@ export function LandingContainer({
   innerClassName,
 }: Props) {
   return (
-    <div className={cn("w-full", className)}>
-      <div
-        className={cn("mx-auto w-full min-w-80 max-w-256 px-4", innerClassName)}
-      >
+    <div className={cn("w-full overflow-x-auto", className)}>
+      <div className={cn("mx-auto w-full min-w-80 max-w-5xl", innerClassName)}>
         {children}
       </div>
     </div>
