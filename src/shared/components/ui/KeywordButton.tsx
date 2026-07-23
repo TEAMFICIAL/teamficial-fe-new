@@ -1,3 +1,4 @@
+import { KEYWORD_BLUR_DATA_URL } from "@/shared/lib/utils";
 import Image from "next/image";
 
 interface KeywordButtonProps {
@@ -28,7 +29,9 @@ export function KeywordButton({
         alt={keywordName}
         width={192}
         height={40}
-        className="h-10 w-auto max-w-48 object-contain"
+        className="w-48 h-auto"
+        placeholder="blur"
+        blurDataURL={KEYWORD_BLUR_DATA_URL}
       />
     </button>
   );
