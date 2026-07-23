@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { KeywordList } from "./KeywordList";
 import { useKeywordList } from "@/features/teamficiallog/hooks/useKeywordList";
 import { ChevronIcon } from "@/shared/components/ui/icons/Chevronicon";
 import { Spinner } from "@/shared/components/ui/Spinner";
 import { ErrorView } from "@/shared/components/ui/ErrorView";
+import { useKeywordComments } from "../hooks/useKeywordComments";
 
 interface LogNoteProps {
   userId: number;
@@ -14,6 +15,9 @@ interface LogNoteProps {
 
 export function LogNote({ userId }: LogNoteProps) {
   const [page, setPage] = useState(0);
+  const [selectedKeywordId, setSelectedKeywordId] = useState<number | null>(
+    null,
+  );
 
   const { data, isLoading, isError } = useKeywordList({
     userId,
@@ -24,9 +28,16 @@ export function LogNote({ userId }: LogNoteProps) {
   const keywords = data?.content ?? [];
   const totalPages = data?.totalPages ?? 1;
 
+  const { data: comments } = useKeywordComments(selectedKeywordId);
+
   function handleKeywordClick(keywordId: number) {
-    console.log("keyword clicked:", keywordId);
+    setSelectedKeywordId(keywordId);
   }
+
+  // comments 변경될 때마다 콘솔 출력
+  useEffect(() => {
+    if (comments) console.log("keyword comments:", comments);
+  }, [comments]);
 
   if (isLoading) {
     return <Spinner />;
