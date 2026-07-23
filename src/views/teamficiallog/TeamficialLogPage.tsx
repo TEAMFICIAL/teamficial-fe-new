@@ -5,6 +5,7 @@ import { useRequesterInfo } from "@/features/teamficiallog/hooks/useRequesterInf
 import { LogNote } from "@/features/teamficiallog/ui/LogNote";
 import { ErrorView } from "@/shared/components/ui/ErrorView";
 import { Spinner } from "@/shared/components/ui/Spinner";
+import { useEffect } from "react";
 
 type Props = {
   logId: string;
@@ -13,11 +14,20 @@ type Props = {
 type PageMode = "normal" | "shared";
 
 export function TeamficialLogPage({ logId }: Props) {
-  const { uuid, userId, _hasHydrated } = useUserStore();
+  const { uuid, userId, _hasHydrated, clearUser } = useUserStore();
+
+  useEffect(() => {
+    if (!_hasHydrated) return;
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken && uuid) clearUser();
+  }, [_hasHydrated, uuid, clearUser]);
 
   if (!_hasHydrated) return <Spinner />;
 
-  const mode: PageMode = uuid === logId ? "normal" : "shared";
+  const accessToken =
+    typeof window !== "undefined" ? localStorage.getItem("accessToken") : null;
+  const isLoggedIn = !!accessToken && !!uuid;
+  const mode: PageMode = isLoggedIn && uuid === logId ? "normal" : "shared";
 
   return mode === "normal" ? (
     <NormalMode userId={Number(userId)} />
