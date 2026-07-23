@@ -11,7 +11,7 @@ export function ErrorView({ message }: ErrorViewProps) {
         <Image
           src={`/images/404.svg`}
           alt="symbol"
-          width={170}
+          width={0}
           height={70}
           className="h-17.5 w-auto"
           loading="eager"
