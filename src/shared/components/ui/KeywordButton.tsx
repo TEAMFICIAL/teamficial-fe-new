@@ -12,6 +12,14 @@ interface KeywordButtonProps {
   onClick: (keywordId: number) => void;
 }
 
+// 키워드 별 크기 조정
+function getKeywordSize(name: string) {
+  const len = name.length;
+  if (len <= 7) return "h-14 w-auto";
+  if (len <= 10) return "h-12 w-auto";
+  return "h-12 w-auto max-w-56";
+}
+
 export function KeywordButton({
   keywordName,
   keywordId,
@@ -29,7 +37,7 @@ export function KeywordButton({
         alt={keywordName}
         width={192}
         height={40}
-        className="w-48 h-auto"
+        className={getKeywordSize(keywordName)}
         placeholder="blur"
         blurDataURL={KEYWORD_BLUR_DATA_URL}
       />

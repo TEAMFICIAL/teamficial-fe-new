@@ -8,13 +8,17 @@ import type { KeywordItem } from "@/entities/team/model";
 const KEYWORD_RATIOS = [
   {
     topClass: "top-[18%]",
-    sideClass: "left-[52%]",
+    sideClass: "right-[4%]",
     rotateClass: "rotate-[14.8deg]",
   },
-  { topClass: "top-[34%]", sideClass: "left-[6%]", rotateClass: "rotate-0" },
+  {
+    topClass: "top-[34%]",
+    sideClass: "left-[6%]",
+    rotateClass: "rotate-0",
+  },
   {
     topClass: "top-[50%]",
-    sideClass: "left-[54%]",
+    sideClass: "right-[4%]",
     rotateClass: "rotate-[6.7deg]",
   },
   {
@@ -24,7 +28,7 @@ const KEYWORD_RATIOS = [
   },
   {
     topClass: "top-[82%]",
-    sideClass: "left-[53%]",
+    sideClass: "right-[4%]",
     rotateClass: "rotate-[-3.1deg]",
   },
 ] as const;
