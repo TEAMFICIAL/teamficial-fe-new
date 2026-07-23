@@ -28,7 +28,7 @@ export function FooterSection() {
             </a>
           </div>
           <div className="flex flex-col gap-0.5 text-gray-700 body-11">
-            <p>©TEAMFICIAL ALL RIGHT RESERVED</p>
+            <p>©TEAMFICIAL ALL RIGHTS RESERVED</p>
             <div className="flex gap-2">
               <p>버그 및 불편사항 접수</p>
               <a
